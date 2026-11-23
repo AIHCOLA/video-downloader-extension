@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>HLS 视频下载器 · 本地网页版</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🎬</div>
+        <div>
+          <h1>HLS 视频下载器</h1>
+          <p class="subtitle">本地网页版插件 · m3u8 分段视频（AES-128）→ MP4</p>
+        </div>
+      </div>
+      <div class="env-badges" id="envBadges"></div>
+    </header>
+
+    <main>
+      <!-- 下载表单 -->
+      <section class="card" id="formCard">
+        <form id="downloadForm" autocomplete="off" novalidate>
+          <label class="field">
+            <span class="field-label">m3u8 链接</span>
+            <div class="url-row">
+              <input id="urlInput" name="url" type="text" spellcheck="false"
+                     placeholder="https://vv.jisuzyv.com/play/aQWNV05d/index.m3u8" required>
+              <button type="button" id="probeBtn" class="btn btn-ghost">解析链接</button>
+            </div>
+            <span class="field-hint">支持媒体播放列表或 master 播放列表（自动选择最高码率）</span>
+          </label>
+
+          <details class="advanced" id="advancedBox">
+            <summary>高级选项（Referer / UA / 并发 / 时间裁剪 / 输出路径）</summary>
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">Referer</span>
+                <input id="refererInput" type="text" spellcheck="false"
+                       placeholder="留空按链接自动推导（本站应为 https://vv.jisuzyv.com/）">
+              </label>
+              <label class="field">
+                <span class="field-label">User-Agent</span>
+                <input id="uaInput" type="text" spellcheck="false" placeholder="留空使用内置 Chrome UA">
+              </label>
+            </div>
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">开始秒数（可选）</span>
+                <input id="startInput" type="number" min="0" step="0.1" placeholder="如 0">
+              </label>
+              <label class="field">
+                <span class="field-label">结束秒数（可选）</span>
+                <input id="endInput" type="number" min="0" step="0.1" placeholder="如 20（只下前 20 秒）">
+              </label>
+            </div>
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">输出目录</span>
+                <input id="outDirInput" type="text" spellcheck="false" placeholder="留空 = 工作区 downloads/">
+              </label>
+              <label class="field">
+                <span class="field-label">文件名（可选）</span>
+                <input id="outNameInput" type="text" spellcheck="false" placeholder="留空自动命名，如 aQWNV05d.mp4">
+              </label>
+            </div>
+            <div class="grid-2">
+              <label class="field">
+                <span class="field-label">并发数 <em class="conc-value" id="concValue">32</em></span>
+                <input id="concInput" type="range" min="8" max="64" step="4" value="32">
+              </label>
+              <label class="field">
+                <span class="field-label">附加请求头（每行一个「名称: 值」）</span>
+                <textarea id="headersInput" rows="2" spellcheck="false" placeholder="Cookie: a=b"></textarea>
+              </label>
+            </div>
+            <div class="checks">
+              <label><input type="checkbox" id="keepTsInput"> 保留 TS 文件</label>
+              <label><input type="checkbox" id="noMp4Input"> 只输出 TS（不调用 ffmpeg）</label>
+              <label><input type="checkbox" id="verifySslInput"> 严格校验 HTTPS 证书</label>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button type="submit" id="startBtn" class="btn btn-primary">开始下载</button>
+            <button type="button" id="cancelBtn" class="btn btn-danger hidden">取消下载</button>
+            <span class="hint">下载在后台进行，可关闭页面；文件保存在输出目录</span>
+          </div>
+        </form>
+      </section>
+
+      <!-- 播放列表信息 -->
+      <section class="card hidden" id="probeCard">
+        <div class="card-head">
+          <h2>播放列表信息</h2>
+          <button type="button" class="btn btn-mini btn-ghost" id="probeCloseBtn">收起</button>
+        </div>
+        <div id="probeBody" class="probe-body"></div>
+      </section>
+
+      <!-- 进度 -->
+      <section class="card hidden" id="progressCard">
+        <div class="progress-head">
+          <div>
+            <div class="phase-label" id="phaseLabel">准备中…</div>
+            <div class="progress-message" id="progressMessage"></div>
+          </div>
+          <div class="percent" id="percentText">0%</div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar" id="progressBar" style="width:0%"></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="stat-label">已下载</span><span class="stat-value" id="downloadedText">-</span></div>
+          <div class="stat"><span class="stat-label">下载速度</span><span class="stat-value" id="speedText">-</span></div>
+          <div class="stat"><span class="stat-label">剩余时间</span><span class="stat-value" id="etaText">-</span></div>
+          <div class="stat"><span class="stat-label">片段进度</span><span class="stat-value" id="segmentsText">-</span></div>
+        </div>
+        <details class="logs" open>
+          <summary>运行日志</summary>
+          <pre id="logBox"></pre>
+        </details>
+      </section>
+
+      <!-- 结果 -->
+      <section class="card result-card hidden" id="resultCard">
+        <div class="card-head">
+          <h2>✅ 下载完成</h2>
+          <button type="button" class="btn btn-mini btn-ghost" id="resultCloseBtn">收起</button>
+        </div>
+        <dl class="result-grid" id="resultGrid"></dl>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="openFolderBtn">打开文件夹</button>
+          <button type="button" class="btn btn-ghost" id="copyPathBtn">复制路径</button>
+          <button type="button" class="btn btn-ghost" id="againBtn">再下一次</button>
+        </div>
+      </section>
+
+      <!-- 错误 -->
+      <section class="card error-card hidden" id="errorCard">
+        <div class="card-head">
+          <h2>❌ 出错了</h2>
+          <button type="button" class="btn btn-mini btn-ghost" id="errorCloseBtn">收起</button>
+        </div>
+        <pre id="errorText" class="error-text"></pre>
+        <p class="hint" id="errorHint"></p>
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="errorRetryBtn">返回重试</button>
+        </div>
+      </section>
+
+      <!-- 历史任务 -->
+      <section class="card hidden" id="historyCard">
+        <h2>最近任务</h2>
+        <ul id="historyList" class="history-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>仅用于下载你有权保存的内容</span>
+      <span>·</span>
+      <span>服务仅监听 127.0.0.1</span>
+      <span>·</span>
+      <span id="footerVersion">HLS 下载器</span>
+    </footer>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

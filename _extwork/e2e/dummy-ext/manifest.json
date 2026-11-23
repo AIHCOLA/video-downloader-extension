@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "DSH E2E Dummy Extension",
+  "version": "0.0.1",
+  "description": "Minimal MV3 extension used to verify headless Chrome can load unpacked extensions.",
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html" }
+}

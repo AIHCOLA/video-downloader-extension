@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视频下载器 · 下载</title>
+  <link rel="stylesheet" href="downloader.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="../icons/icon48.png" alt="" width="32" height="32">
+      <div class="brand-text">
+        <h1>视频下载器</h1>
+        <div class="sub">扩展内下载 · 边下边写 · HLS(m3u8) / B站</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="cancel" class="btn danger" type="button" disabled>取消下载</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="label">视频地址</div>
+      <div class="url-row">
+        <span id="video-url" class="mono url"></span>
+        <button id="copy-url" class="btn ghost small" type="button">复制</button>
+      </div>
+      <div id="page-title" class="muted small-text"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 id="info-title">播放列表信息</h2>
+        <span id="info-status" class="muted small-text"></span>
+      </div>
+      <div class="info-grid">
+        <div class="info-item"><span id="info-segments-label">片段数</span><b id="info-segments">—</b></div>
+        <div class="info-item"><span>总时长</span><b id="info-duration">—</b></div>
+        <div class="info-item"><span>加密</span><b id="info-encryption">—</b></div>
+        <div class="info-item"><span>类型</span><b id="info-type">—</b></div>
+      </div>
+      <div id="info-variants" class="variants hidden"></div>
+      <div id="info-error" class="error-text hidden"></div>
+    </section>
+
+    <section class="card">
+      <div id="hls-controls" class="controls">
+        <label class="field">
+          <span>输出格式</span>
+          <select id="format" class="input">
+            <option value="mp4">MP4（H.264 + AAC）</option>
+            <option value="ts">TS 原始流</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>并发数</span>
+          <input id="concurrency" class="input number" type="number" min="1" max="64" step="1" value="16">
+        </label>
+        <label class="field">
+          <span>开始（秒，可选）</span>
+          <input id="start-sec" class="input number" type="number" min="0" step="1" placeholder="0">
+        </label>
+        <label class="field">
+          <span>结束（秒，可选）</span>
+          <input id="end" class="input number" type="number" min="0" step="1" placeholder="不限">
+        </label>
+      </div>
+      <div id="site-controls" class="controls hidden">
+        <label class="field">
+          <span>清晰度</span>
+          <select id="quality" class="input"></select>
+        </label>
+      </div>
+      <p id="site-note" class="muted small-text hidden"></p>
+      <p id="save-mode-note" class="muted small-text"></p>
+      <div id="status-banner" class="banner hidden" role="alert"></div>
+      <button id="start" class="btn primary block" type="button">选择保存位置并开始下载</button>
+    </section>
+
+    <section id="progress-card" class="card hidden">
+      <div class="progress-head">
+        <span id="phase-text" class="phase">等待开始</span>
+        <span id="percent-text" class="percent">0%</span>
+      </div>
+      <div class="bar"><div id="bar-fill" class="bar-fill"></div></div>
+      <div class="stats">
+        <span class="stat"><span id="segments-label" class="k">片段</span><b id="segments-text">0 / 0</b></span>
+        <span class="stat"><span class="k">已下载</span><b id="downloaded-text">0 B</b></span>
+        <span class="stat"><span class="k">已写入</span><b id="bytes-text">0 B</b></span>
+        <span class="stat"><span class="k">速度</span><b id="speed-text">—</b></span>
+        <span class="stat"><span class="k">剩余</span><b id="eta-text">—</b></span>
+      </div>
+    </section>
+
+    <section id="result-card" class="card result-card hidden">
+      <div class="card-head">
+        <h2>下载完成</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-item"><span>文件名</span><b id="result-filename">—</b></div>
+        <div class="info-item"><span>文件大小</span><b id="result-size">—</b></div>
+        <div class="info-item"><span>时长</span><b id="result-duration">—</b></div>
+        <div class="info-item"><span>分辨率</span><b id="result-resolution">—</b></div>
+        <div class="info-item"><span>格式</span><b id="result-format">—</b></div>
+      </div>
+      <p id="result-hint" class="muted small-text"></p>
+      <div class="row gap">
+        <button id="again" class="btn" type="button">重新下载</button>
+      </div>
+    </section>
+
+    <section class="card log-card">
+      <button id="log-toggle" class="log-toggle" type="button">
+        <span>运行日志</span>
+        <span id="log-count" class="muted small-text">（0 条）</span>
+        <span id="log-chev" class="chev">▾</span>
+      </button>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+
+  <script type="module" src="downloader.js"></script>
+</body>
+</html>

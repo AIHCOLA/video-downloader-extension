@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://www.douyin.com/"
+        }
+      ]
+    },
+    "condition": {
+      "requestDomains": [
+        "douyinvod.com",
+        "douyinpic.com",
+        "douyinstatic.com",
+        "bytedance.com",
+        "bytecdn.cn",
+        "byteimg.com",
+        "zjcdn.com",
+        "ixigua.com",
+        "pstatp.com"
+      ],
+      "resourceTypes": ["xmlhttprequest", "media"]
+    }
+  }
+]

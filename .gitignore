@@ -1,0 +1,19 @@
+# ---- 二进制 / 工具链（体积大，与源码无关）----
+_tools/
+_extwork/browsers/
+_extwork/npm-cache/
+node_modules/
+__pycache__/
+*.pyc
+
+# ---- 测试产物（可复现，不入库）----
+_extwork/**/out/
+_extwork/**/uploaded/
+_extwork/**/screenshots/
+downloads/
+
+# ---- 临时文件 ----
+.tmp/
+*.log
+.DS_Store
+Thumbs.db

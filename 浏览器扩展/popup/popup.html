@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视频下载器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="brand">
+    <img class="logo" src="../icons/icon48.png" alt="" width="36" height="36">
+    <div class="brand-text">
+      <h1>视频下载器</h1>
+      <div id="tab-info" class="tab-info">正在读取当前标签页…</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="source-card" class="card">
+      <div class="section-head">
+        <h2 id="source-title">检测到的 M3U8</h2>
+        <span id="candidate-count" class="pill">0</span>
+      </div>
+      <div id="candidates" class="candidate-list"></div>
+      <p id="empty-hint" class="empty-hint">先在本页播放视频，或手动粘贴 m3u8 链接。</p>
+      <div class="row gap">
+        <button id="refresh" class="btn ghost small" type="button">刷新列表</button>
+        <button id="clear" class="btn ghost small" type="button">清空</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>手动输入</h2>
+      </div>
+      <div class="row gap">
+        <input id="manual-url" class="input" type="url" spellcheck="false" autocomplete="off"
+               placeholder="https://example.com/index.m3u8">
+        <button id="probe" class="btn small" type="button">解析</button>
+      </div>
+      <div id="probe-result" class="probe hidden"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>下载设置</h2>
+      </div>
+      <div class="settings-row">
+        <label class="field">
+          <span>并发数</span>
+          <input id="concurrency" class="input number" type="number" min="1" max="64" step="1" value="16">
+        </label>
+        <label class="field">
+          <span>输出格式</span>
+          <select id="format" class="input">
+            <option value="mp4">MP4（推荐）</option>
+            <option value="ts">TS 原始流</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <div id="status" class="status" role="status"></div>
+
+    <button id="start" class="btn primary block" type="button">开始下载</button>
+    <p class="footnote">下载过程在扩展内的下载页面完成；MP4 输出支持 H.264 + AAC。</p>
+  </main>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

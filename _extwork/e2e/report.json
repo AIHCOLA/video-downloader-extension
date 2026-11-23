@@ -1,0 +1,327 @@
+{
+  "startedAt": "2026-11-08T15:32:29.480Z",
+  "chrome": "C:\\Users\\20823\\Documents\\deepseek-harness\\default-workspace\\_extwork\\browsers\\chrome-win64\\chrome.exe",
+  "steps": [
+    {
+      "name": "浏览器启动",
+      "ok": true,
+      "detail": "Chrome/157.0.8103.38"
+    },
+    {
+      "name": "扩展加载 + service worker",
+      "ok": true,
+      "detail": "id=ejbeiclmpfhpkgimhjfjgdffnncoabaf"
+    },
+    {
+      "name": "popup 页面加载",
+      "ok": true,
+      "detail": "errors=0"
+    },
+    {
+      "name": "m3u8 自动检测（webRequest → 候选）",
+      "ok": true,
+      "detail": "候选数=1 [{\"time\":1794151952067,\"url\":\"https://vv.jisuzyv.com/play/aQWNV05d/index.m3u8\"}]"
+    },
+    {
+      "name": "MP4：下载页解析播放列表",
+      "ok": true,
+      "detail": "segments=1309"
+    },
+    {
+      "name": "MP4：点击开始下载",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MP4：下载完成（done=true）",
+      "ok": true,
+      "detail": "{\"phase\":\"done\",\"percent\":100,\"segmentsDone\":2,\"segmentsTotal\":2,\"error\":null,\"done\":true,\"filename\":\"video_aQWNV05d.mp4\",\"bytes\":920307}"
+    },
+    {
+      "name": "MP4：__HLS_RESULT 已写入",
+      "ok": true,
+      "detail": "{\"done\":true,\"filename\":\"video_aQWNV05d.mp4\",\"bytes\":920307,\"durationSeconds\":10.003,\"muxed\":true,\"moovFront\":false,\"pathHint\":\"已通过浏览器下载，请到浏览器下载目录查看（Ctrl+J / chrome://downloads）。\"}"
+    },
+    {
+      "name": "MP4：__HLS_BLOB_SIZE > 0",
+      "ok": true,
+      "detail": "920307"
+    },
+    {
+      "name": "MP4：产物字节上传成功（fetch Blob）",
+      "ok": true,
+      "detail": "{\"ok\":true,\"size\":920307,\"result\":{\"ok\":true,\"size\":920307,\"path\":\"C:\\\\Users\\\\20823\\\\Documents\\\\deepseek-harness\\\\default-workspace\\\\_extwork\\\\e2e\\\\uploaded\\\\e2e-mp4-1794151962005.mp4\"}}"
+    },
+    {
+      "name": "MP4：ffmpeg 时长 10s±0.6",
+      "ok": true,
+      "detail": "duration=10"
+    },
+    {
+      "name": "MP4：含 H.264 视频流",
+      "ok": true,
+      "detail": "Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 615 kb/s, 24 fps,"
+    },
+    {
+      "name": "MP4：含 AAC 音频流",
+      "ok": true,
+      "detail": "Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 123 kb/s (default)"
+    },
+    {
+      "name": "MP4：全片解码无错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MP4：__HLS_RESULT.moovFront === false（渐进式）",
+      "ok": true,
+      "detail": "false"
+    },
+    {
+      "name": "MP4：文件结构 moov 在 mdat 之后（moov 末尾）",
+      "ok": true,
+      "detail": "mdat@32 moov@914265"
+    },
+    {
+      "name": "MP4：下载阶段无 JS 错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MP4：下载页解析播放列表",
+      "ok": true,
+      "detail": "segments=1309"
+    },
+    {
+      "name": "MP4：点击开始下载",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MP4：下载完成（done=true）",
+      "ok": true,
+      "detail": "{\"phase\":\"done\",\"percent\":100,\"segmentsDone\":4,\"segmentsTotal\":4,\"error\":null,\"done\":true,\"filename\":\"video_aQWNV05d.mp4\",\"bytes\":4257633}"
+    },
+    {
+      "name": "MP4：__HLS_RESULT 已写入",
+      "ok": true,
+      "detail": "{\"done\":true,\"filename\":\"video_aQWNV05d.mp4\",\"bytes\":4257633,\"durationSeconds\":10.014,\"muxed\":true,\"moovFront\":false,\"pathHint\":\"已通过浏览器下载，请到浏览器下载目录查看（Ctrl+J / chrome://downloads）。\"}"
+    },
+    {
+      "name": "MP4：__HLS_BLOB_SIZE > 0",
+      "ok": true,
+      "detail": "4257633"
+    },
+    {
+      "name": "MP4：产物字节上传成功（fetch Blob）",
+      "ok": true,
+      "detail": "{\"ok\":true,\"size\":4257633,\"result\":{\"ok\":true,\"size\":4257633,\"path\":\"C:\\\\Users\\\\20823\\\\Documents\\\\deepseek-harness\\\\default-workspace\\\\_extwork\\\\e2e\\\\uploaded\\\\e2e-mp4-1794151968803.mp4\"}}"
+    },
+    {
+      "name": "MP4：ffmpeg 时长 10s±0.6",
+      "ok": true,
+      "detail": "duration=10.01"
+    },
+    {
+      "name": "MP4：含 H.264 视频流",
+      "ok": true,
+      "detail": "Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 3341 kb/s, 24 fps"
+    },
+    {
+      "name": "MP4：含 AAC 音频流",
+      "ok": true,
+      "detail": "Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 129 kb/s (default)"
+    },
+    {
+      "name": "MP4：全片解码无错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MP4：__HLS_RESULT.moovFront === false（渐进式）",
+      "ok": true,
+      "detail": "false"
+    },
+    {
+      "name": "MP4：文件结构 moov 在 mdat 之后（moov 末尾）",
+      "ok": true,
+      "detail": "mdat@32 moov@4251635"
+    },
+    {
+      "name": "MP4：下载阶段无 JS 错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "TS：下载页解析播放列表",
+      "ok": true,
+      "detail": "segments=1309"
+    },
+    {
+      "name": "TS：点击开始下载",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "TS：下载完成（done=true）",
+      "ok": true,
+      "detail": "{\"phase\":\"done\",\"percent\":100,\"segmentsDone\":2,\"segmentsTotal\":2,\"error\":null,\"done\":true,\"filename\":\"video_aQWNV05d.ts\",\"bytes\":1081940}"
+    },
+    {
+      "name": "TS：__HLS_RESULT 已写入",
+      "ok": true,
+      "detail": "{\"done\":true,\"filename\":\"video_aQWNV05d.ts\",\"bytes\":1081940,\"durationSeconds\":10.833,\"muxed\":false,\"moovFront\":false,\"pathHint\":\"已通过浏览器下载，请到浏览器下载目录查看（Ctrl+J / chrome://downloads）。\"}"
+    },
+    {
+      "name": "TS：__HLS_BLOB_SIZE > 0",
+      "ok": true,
+      "detail": "1081940"
+    },
+    {
+      "name": "TS：产物字节上传成功（fetch Blob）",
+      "ok": true,
+      "detail": "{\"ok\":true,\"size\":1081940,\"result\":{\"ok\":true,\"size\":1081940,\"path\":\"C:\\\\Users\\\\20823\\\\Documents\\\\deepseek-harness\\\\default-workspace\\\\_extwork\\\\e2e\\\\uploaded\\\\e2e-ts-1794151974562.ts\"}}"
+    },
+    {
+      "name": "TS：ffmpeg 时长在 6~18s 内（TS 不裁剪）",
+      "ok": true,
+      "detail": "duration=10.85"
+    },
+    {
+      "name": "TS：含 H.264 视频流",
+      "ok": true,
+      "detail": "Video: h264 (High) ([27][0][0][0] / 0x001B), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 24 fps, 24 t"
+    },
+    {
+      "name": "TS：含 AAC 音频流",
+      "ok": true,
+      "detail": "Audio: aac (LC) ([15][0][0][0] / 0x000F), 48000 Hz, stereo, fltp, 131 kb/s, start 1.462000"
+    },
+    {
+      "name": "TS：全片解码无错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "TS：下载阶段无 JS 错误",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "取消：点击取消按钮",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "取消：状态变为已取消",
+      "ok": true,
+      "detail": "{\"phase\":\"cancelled\",\"percent\":0.15,\"segmentsDone\":2,\"segmentsTotal\":1309,\"error\":\"已取消\",\"done\":false,\"filename\":\"video_aQWNV05d.mp4\",\"bytes\":0}"
+    },
+    {
+      "name": "取消：页面显示已取消",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "取消：无成功结果",
+      "ok": true,
+      "detail": "null"
+    }
+  ],
+  "consoleErrors": [],
+  "files": [
+    "C:\\Users\\20823\\Documents\\deepseek-harness\\default-workspace\\_extwork\\e2e\\uploaded\\e2e-mp4-1794151962005.mp4",
+    "C:\\Users\\20823\\Documents\\deepseek-harness\\default-workspace\\_extwork\\e2e\\uploaded\\e2e-mp4-1794151968803.mp4",
+    "C:\\Users\\20823\\Documents\\deepseek-harness\\default-workspace\\_extwork\\e2e\\uploaded\\e2e-ts-1794151974562.ts"
+  ],
+  "timeline": [
+    {
+      "t": 5,
+      "label": "MP4",
+      "line": "phase=playlist pct=0 seg=0/0 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 714,
+      "label": "MP4",
+      "line": "phase=download pct=0 seg=0/2 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 2496,
+      "label": "MP4",
+      "line": "phase=download pct=50 seg=1/2 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 3917,
+      "label": "MP4",
+      "line": "phase=done pct=100 seg=2/2 bytes=920307 err=null result=no blob=920307"
+    },
+    {
+      "t": 4269,
+      "label": "MP4",
+      "line": "phase=done pct=100 seg=2/2 bytes=920307 err=null result=yes blob=920307"
+    },
+    {
+      "t": 4,
+      "label": "MP4",
+      "line": "phase=playlist pct=0 seg=0/0 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 727,
+      "label": "MP4",
+      "line": "phase=download pct=0 seg=0/4 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 1813,
+      "label": "MP4",
+      "line": "phase=download pct=25 seg=1/4 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 2881,
+      "label": "MP4",
+      "line": "phase=download pct=50 seg=2/4 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 3248,
+      "label": "MP4",
+      "line": "phase=download pct=75 seg=3/4 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 5014,
+      "label": "MP4",
+      "line": "phase=done pct=100 seg=4/4 bytes=4257633 err=null result=no blob=4257633"
+    },
+    {
+      "t": 5369,
+      "label": "MP4",
+      "line": "phase=done pct=100 seg=4/4 bytes=4257633 err=null result=yes blob=4257633"
+    },
+    {
+      "t": 4,
+      "label": "TS",
+      "line": "phase=playlist pct=0 seg=0/0 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 727,
+      "label": "TS",
+      "line": "phase=download pct=0 seg=0/2 bytes=0 err=null result=no blob=0"
+    },
+    {
+      "t": 2142,
+      "label": "TS",
+      "line": "phase=download pct=50 seg=1/2 bytes=173524 err=null result=no blob=0"
+    },
+    {
+      "t": 3555,
+      "label": "TS",
+      "line": "phase=done pct=100 seg=2/2 bytes=1081940 err=null result=no blob=1081940"
+    },
+    {
+      "t": 3908,
+      "label": "TS",
+      "line": "phase=done pct=100 seg=2/2 bytes=1081940 err=null result=yes blob=1081940"
+    }
+  ],
+  "finishedAt": "2026-11-08T15:32:58.980Z",
+  "downloadFiles": [],
+  "ok": true
+}

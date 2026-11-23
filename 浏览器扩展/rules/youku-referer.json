@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://v.youku.com/"
+        }
+      ]
+    },
+    "condition": {
+      "requestDomains": [
+        "youku.com",
+        "ykimg.com",
+        "alicdn.com",
+        "mmstat.com",
+        "cibntv.net"
+      ],
+      "resourceTypes": ["xmlhttprequest", "media", "other"]
+    }
+  }
+]
