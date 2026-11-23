@@ -1,5 +1,9 @@
 # 视频下载器（浏览器扩展 · Chrome / Edge · Manifest V3）
 
+![version](https://img.shields.io/badge/version-1.4.0-blue)
+![license](https://img.shields.io/badge/license-%E9%9D%9E%E5%95%86%E4%B8%9A%20NonCommercial-orange)
+![platform](https://img.shields.io/badge/Chrome%20%2F%20Edge-%E2%89%A5%20116-green)
+
 在浏览器里直接下载网页播放的视频，纯扩展内完成、**不需要安装本地服务端**：
 
 - **HLS（m3u8）**：自动检测 → 并发下载分片 → AES-128 解密 → **直接封装为普通 MP4**（H.264 + AAC，默认）或保留 TS 原始流。
@@ -671,3 +675,12 @@ window.__HLS_START(); // 可编程触发“开始下载”（等价于点击 #st
 
 本扩展仅供个人备份与学习研究使用。请遵守目标网站的服务条款与当地法律法规，
 仅下载你有权保存的内容，不要用于侵犯版权或绕过付费/授权机制。
+
+## 十、使用协议
+
+本项目采用**自定义非商业使用协议**（不是 MIT / Apache 等开源许可），全文见仓库根目录的 [`LICENSE`](../LICENSE)。
+
+- ✅ 允许：个人学习研究、备份自己有权保存的内容、保留协议的复制与修改
+- ❌ 禁止：商业用途、侵犯著作权、绕过付费 / 会员 / 地区限制 / DRM、批量抓取与转售
+- ⚠️ 免责：按「现状」提供，无任何担保；使用风险与法律责任由使用者自负
+- 📄 违反协议即终止授权，须停止使用并删除副本

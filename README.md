@@ -1,5 +1,10 @@
 # 视频下载器（Chrome / Edge 扩展）
 
+![version](https://img.shields.io/badge/version-1.4.0-blue)
+![license](https://img.shields.io/badge/license-%E9%9D%9E%E5%95%86%E4%B8%9A%20NonCommercial-orange)
+![platform](https://img.shields.io/badge/Chrome%20%2F%20Edge-%E2%89%A5%20116-green)
+![manifest](https://img.shields.io/badge/Manifest-V3-purple)
+
 浏览器内直接下载网页视频的 Manifest V3 扩展，纯前端、无本地服务端、无远程代码。
 
 支持：
@@ -46,3 +51,11 @@ node _extwork/shell-test/integration-youku.mjs      # 优酷（本机 IP 被风�
 
 仅供个人备份与学习研究使用。请遵守目标网站的服务条款与当地法律法规，
 仅下载你有权保存的内容；本项目不提供任何破解 DRM 或绕过付费 / 授权机制的能力。
+
+## 使用协议
+
+本项目采用**自定义非商业使用协议**，详见 [`LICENSE`](LICENSE)。要点：
+
+- ✅ 允许：个人学习研究、备份自己有权保存的内容、保留署名的复制与修改
+- ❌ 禁止：商业用途、侵犯著作权、绕过付费 / 会员 / 地区限制 / DRM、批量抓取与转售
+- ⚠️ 免责：软件按「现状」提供，使用风险与法律责任由使用者自负
